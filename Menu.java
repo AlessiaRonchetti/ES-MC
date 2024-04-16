@@ -1,46 +1,4 @@
-package cartellaEsercizio;
-
 import java.util.Scanner;
-public class Eser {
-    public static void main(String[] args) {
-        ArrayList<String> clienti = new ArrayList<String>();
-        int i = clienti.size();
-        Scanner var1 = new Scanner(System.in);
-    while(i < 4){
-        System.out.println("ciao benvenuto inserisci il tuo nome utente");
-        String nome = var1.nextLine();
-        Utente utente = new Utente(clienti);
-        utente.accesso(nome);
-        i = clienti.size();}
-    }
-}
-
-class Utente {
-    Scanner scanner = new Scanner(System.in);
-    String nuovonome;
-    ArrayList<String> clienti;
-
-    public Utente(ArrayList<String> clienti) {
-        this.clienti = clienti;
-    }
-
-    public String getNuovonome() {
-        return nuovonome;
-    }
-
-    public void setNuovonome(String nome) {
-        this.nuovonome = nome;
-    }
-
-    public void accesso(String nuovonome) {
-        if (clienti.contains(nuovonome)) {
-            System.out.println("Felice di ritrovarti " + nuovonome);
-        } else {
-            clienti.add(nuovonome);
-            System.out.println("Ciao benvenuto " + nuovonome);
-        }
-    }
-}
 
 public class Menu {
 
