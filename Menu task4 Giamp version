@@ -1,0 +1,22 @@
+import java.util.Arrays;
+
+public class Test {
+    public static void main(String[] args) {
+        String[] tavoli = { "free", "free", "free", "free", "free", "free" };
+    int i = tavoli.length;
+    int y = 0;
+    while (y  < i) {
+        if (tavoli[y].equals("free")) {
+            System.out.println("PGentile nome puoi accomodarti al tavolo" + (y +1));
+            tavoli[y] = "occupied";
+            y++;}
+        
+        else {y++;
+        System.out.println("PGentile nome puoi accomodarti al tavolo" + (y +1));
+        tavoli[y] = "occupied";
+        y++;
+        }
+    }
+    }}
+//sistema break e scanner alla y nell'inserimento
+//però il codice gira giusto
