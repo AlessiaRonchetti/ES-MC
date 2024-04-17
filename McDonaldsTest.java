@@ -1,65 +1,94 @@
-//Sistema di abinamento del McDonalds Tavolo
-//Output- Abbinare uno dei 6 tavoli che deve essere libero all ordine e stampare, numero tavolo, totale ordine con budget scelto e piatti per nr di persone
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+public class McDonalds2 {
+    static class Tavolo {
+        boolean libero;
+        String numeroTavolo;
+        double prezzoPerPersona;
 
-public class McDonaldsTest {
+        Tavolo(boolean libero, double prezzoPerPersona) {
+            this.libero = libero;
+            this.prezzoPerPersona = prezzoPerPersona;
+        }
 
+        public boolean isLibero(){
+            return libero;
+        }
+        public void setLibero(boolean libero) {
+            this.libero = libero;
+        }
+        public double getPrezzoPerPersona() {
+            return prezzoPerPersona;
+        }
+    
+        public void setPrezzoPerPersona(double prezzoPerPersona) {
+            this.prezzoPerPersona = prezzoPerPersona;
+        }
+    }
     public static void main(String[] args) {
         Scanner myStr = new Scanner(System.in);
-        int numeroTavoli=6;
+        Scanner myInt = new Scanner(System.in);
+        int numeroTavoli = 6;
+        
+        int ppp;//Prezzo per Persona
+        Map<Integer, Tavolo> dizionarioTavoli = new HashMap<>();
+        for (int i = 1; i <= numeroTavoli; i++) {
+            int nomeTavolo = i;
+            boolean libero=true;
+            //System.out.println("Inserisci Prezzo per Persona per Tavolo "+i);
+            //ppp=myInt.nextInt();
+            ppp=15;
 
-        String databaseTavoli2[]={"Tavolo1","Libero","","Tavolo2","Libero","","Tavolo3","Libero","","Tavolo4","Libero","","Tavolo5","Libero","","Tavolo6","Libero","",};
+            Tavolo tavolo = new Tavolo(libero, ppp);
 
-        ArrayList<String> tavoli4 = new ArrayList<>();
-
-        for (int i = 0; i < databaseTavoli2.length; i++) {
-        tavoli4.add(databaseTavoli2[i]);
+            dizionarioTavoli.put(nomeTavolo,tavolo); // Prezzo per persona di 15.0 come esempio
         }
 
-        System.out.println(tavoli4);
-
-
-        int j=1;
-        int index=1;
-        boolean condition=true;
-
-        while (condition==true) {
-            System.out.println("Un altro cliente ha deciso di sedersi al tavolo? SI");
-            String clientePresente=myStr.nextLine();
-            if (clientePresente.equalsIgnoreCase("si")) {
-                while (j<=numeroTavoli) {
-                    String element = tavoli4.get(index);
-                    if (element.equals("Libero")) {
-                        tavoli4.set(index,"Occupato");
-                        //Qua vogliamo inserire tutte le caratteristiche del Cliente
-                        break;    
-                    }
-                    j++;
-                    index=index+3;
-                    
-                }
-                System.out.println(tavoli4);
-            }else{
-                condition=false;
-                break;
-
+        boolean m=true;
+        while(m=true){
+            System.out.println("Dizionario dei tavoli:");
+            for (Map.Entry<Integer, Tavolo> entry : dizionarioTavoli.entrySet()) {
+                Integer nomeTavolo = entry.getKey();
+                Tavolo tavolo = entry.getValue();
+                System.out.println("Tavolo Numero: " + nomeTavolo + ", é Libero?: " + tavolo.isLibero() + ", Prezzo per persona: " + tavolo.getPrezzoPerPersona());
             }
-            
-            
-        }
-        j=1;
-        index=0;
-        while (j<=numeroTavoli) {
-            System.out.println("Il "+tavoli4.get(index)+" è "+tavoli4.get(index+1)+". le sue caratteristiche sono: "+tavoli4.get(index+2));
-            j++;
-            index=index+3;
-            
-        }
+            System.out.println("Scegli quale Tavolo vuoi occupare");
+            int sceltaTavolo=myInt.nextInt();
+            if (sceltaTavolo >= 1 && sceltaTavolo <= numeroTavoli) {
+                Tavolo tavoloScelto = dizionarioTavoli.get(sceltaTavolo);
+                boolean tavoloLibero=tavoloScelto.isLibero();
+    
+                if (tavoloLibero==true){
+                    System.out.println("il tavolo è libero");
+                    tavoloScelto.setLibero(false);
+    
+    
+                }else{
+                    System.out.println("il tavolo non è libero");
+                    System.out.println("Vuoi Liberarlo? rispondi si");
+                    String liberare=myStr.nextLine();
+                    if(liberare.equalsIgnoreCase("si")){
+                        tavoloScelto.setLibero(true);
 
+                    }
+                }
+    
+                // Stampa le informazioni del tavolo scelto
+                System.out.println("Hai scelto il tavolo " + sceltaTavolo);
+                System.out.println("Stato: Libero = " + tavoloScelto.isLibero() + ", Prezzo per persona = " + tavoloScelto.getPrezzoPerPersona());
+                
+            } else {
+                System.out.println("Scelta non valida. Inserisci un numero di tavolo valido.");
+            }
+      
+            //Object x=tavoli.key();
+            //System.out.println(x);
 
+        }
 
 
 
