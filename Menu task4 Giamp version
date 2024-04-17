@@ -5,17 +5,24 @@ public class Test {
     public static void main(String[] args) {
         Scanner var1 = new Scanner(System.in);
         String[] tavoli = { "free", "free", "free", "free", "free", "free" };
-    int i = tavoli.length;
-    int y = var1.nextInt();
-    while (y  < i) {
-        if (tavoli[y].equals("free")) {
-            System.out.println("Gentile nome il tuo budget è task2 puoi accomodarti al tavolo" + (y +1));
-            tavoli[y] = "occupied";
-           System.out.println(tavoli);
-
-            break;}
-        
-        else {System.out.println("Gentile cliente mi dispiace il suo tavol risulta " + tavoli[y] + " seleziona un altro tavolo");
-             y = var1.nextInt();}
+        int i = tavoli.length;
+        int y = var1.nextInt();
+        while (y < i) {
+            if (y >= 0 && y < i) {
+                if (tavoli[y].equals("free")) {
+                    System.out.println("Gentile cliente, il tuo tavolo è libero. Puoi accomodarti al tavolo " + (y + 1));
+                    tavoli[y] = "occupied";
+                    System.out.println(Arrays.toString(tavoli));
+                    break;
+                } else {
+                    System.out.println("Gentile cliente, mi dispiace. Il tavolo " + (y + 1) + " è occupato. Seleziona un altro tavolo.");
+                    y = var1.nextInt();
+                }
+            } else {
+                System.out.println("Il tavolo selezionato non è valido. Seleziona un tavolo tra 1 e " + i);
+                y = var1.nextInt();
+            }
+        }
+        var1.close();
     }
-    var1.close();}}
+}
