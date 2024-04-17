@@ -55,6 +55,36 @@ public class Menu {
 
         System.out.println("Numero di persone: " + menu.numeroPersone);
         System.out.println("Tipologia del menu: " + menu.tipologiaMenu);
+        System.out.println("Il prezzo totale da pagare: " + (menu.numeroPersone * menu.budget));
+
+        if (Utente.verificaPromozione()) {
+
+            float budgetPromo = (float) (0.3 * (menu.numeroPersone * menu.budget));
+
+            System.out.println("Vuoi utilizzare il tuo budget? Si-No");
+
+            String risposta = s.nextLine();
+
+            if (risposta.equals("Si")) {
+
+                if (budgetPromo < 10) {
+
+                    System.out.println("Complimenti hai vinto una ciambella!");
+
+                } else if (budgetPromo < 20 && budgetPromo >=10) {
+
+                    System.out.println("Complimenti hai vinto un McFlurry al pistacchio!");
+
+                } else {
+
+                    System.out.println("Complimenti hai vinto un buono sconto di 15 euro sul tuo prossimo ordine!");
+
+                }
+
+            } else {
+                System.out.println("Ordine completato. Buon appetito.");
+            }
+        }
 
         s.close();
     }
