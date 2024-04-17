@@ -24,20 +24,10 @@ public class Menu {
     public Menu(int numeroPersone, int budget) {
         this.numeroPersone = numeroPersone;
         this.budget = budget;
-        this.tipologiaMenu = sceltaMenu(numeroPersone, budget);
+        this.tipologiaMenu = getMenuForBudget(budget);
     }
 
-    private String sceltaMenu(int numeroPersone, int budget) {
-        switch (numeroPersone) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-                return getMenuForBudget(budget);
-            default:
-                return null;
-        }
-    }
+
 
     private String getMenuForBudget(int budget) {
         switch (budget) {
@@ -98,10 +88,14 @@ public class Menu {
             String risposta2 = scanner.next();
 
             if (risposta2.equalsIgnoreCase("No")) {
+            	System.out.println("A presto!");
+            	
                 continua = false;
+                break;
             }
         }
         scanner.close();
     }
+
 
 }
