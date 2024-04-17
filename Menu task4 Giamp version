@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Test {
@@ -6,23 +5,23 @@ public class Test {
         Scanner var1 = new Scanner(System.in);
         String[] tavoli = { "free", "free", "free", "free", "free", "free" };
         int i = tavoli.length;
-        int y = var1.nextInt();
-        while (y < i) {
+        int y;
+
+        do {
+            System.out.println("Seleziona un tavolo (da 1 a " + i + "):");
+            y = var1.nextInt() - 1; 
             if (y >= 0 && y < i) {
                 if (tavoli[y].equals("free")) {
                     System.out.println("Gentile cliente, il tuo tavolo è libero. Puoi accomodarti al tavolo " + (y + 1));
                     tavoli[y] = "occupied";
-                    System.out.println(Arrays.toString(tavoli));
                     break;
                 } else {
                     System.out.println("Gentile cliente, mi dispiace. Il tavolo " + (y + 1) + " è occupato. Seleziona un altro tavolo.");
-                    y = var1.nextInt();
                 }
             } else {
                 System.out.println("Il tavolo selezionato non è valido. Seleziona un tavolo tra 1 e " + i);
-                y = var1.nextInt();
             }
-        }
+        } while (true); // Continua fino a quando non viene selezionato un tavolo libero
         var1.close();
     }
 }
