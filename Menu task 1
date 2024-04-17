@@ -29,12 +29,19 @@ class Utente {
         this.nuovonome = nome;
     }
 
-    public void accesso(String nuovonome) {
+  
+    public static boolean verificaPromozione() {
+
         if (clienti.contains(nuovonome)) {
             System.out.println("Felice di ritrovarti " + nuovonome);
+            return true;
+
         } else {
             clienti.add(nuovonome);
             System.out.println("Ciao benvenuto " + nuovonome);
+            return false;
         }
+    }
+}
     }
 }
