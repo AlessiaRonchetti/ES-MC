@@ -1,22 +1,21 @@
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args) {
+        Scanner var1 = new Scanner(System.in);
         String[] tavoli = { "free", "free", "free", "free", "free", "free" };
     int i = tavoli.length;
-    int y = 0;
+    int y = var1.nextInt();
     while (y  < i) {
         if (tavoli[y].equals("free")) {
-            System.out.println("PGentile nome puoi accomodarti al tavolo" + (y +1));
+            System.out.println("Gentile nome il tuo budget è task2 puoi accomodarti al tavolo" + (y +1));
             tavoli[y] = "occupied";
-            y++;}
+           System.out.println(tavoli);
+
+            break;}
         
-        else {y++;
-        System.out.println("PGentile nome puoi accomodarti al tavolo" + (y +1));
-        tavoli[y] = "occupied";
-        y++;
-        }
+        else {System.out.println("Gentile cliente mi dispiace il suo tavol risulta " + tavoli[y] + " seleziona un altro tavolo");
+             y = var1.nextInt();}
     }
-    }}
-//sistema break e scanner alla y nell'inserimento
-//però il codice gira giusto
+    var1.close();}}
